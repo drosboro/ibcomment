@@ -73,7 +73,9 @@ $ ->
     clauses = []
     clauses.push $.trim(c.innerHTML) for c in selected
 
-    str = $("input#student-name").val() + " " + clauses.join("; ")
+    str = $("input#student-name").val()
+    str += " " if str.length > 0
+    str += clauses.join("; ")
     str += "." if clauses.length > 0
     str = str.charAt(0).toUpperCase() + str.slice(1)
 
