@@ -1,0 +1,66 @@
+!!!
+%head
+  %link{ rel: "stylesheet", type: "text/css", href: "/assets/css/application.css"}
+  %script{ src: "/assets/js/application.js" }
+%body
+  .navbar.navbar-static-top.navbar-default
+    .container
+      %a.navbar-brand IB Comment Builder
+  .container
+    .row
+      .col-md-12
+        
+    .row
+      .col-md-9
+        %ul.nav.nav-tabs#course-tabs{ role: "tablist" }
+          
+        %p.clearfix
+
+        %form{ role: "form" }
+          .form-group
+            %label{ for: "student-name" } Student Name
+            %input.form-control#student-name{ type: "text", placeholder: "First Name" }
+        .tab-content#content-tab
+          
+            
+      .col-md-3
+        .panel.panel-default#comment-panel
+          .panel-heading
+            .panel-title
+              Comment
+          .panel-body
+            %textarea.form-control#comment-content
+          .panel-footer
+            Words:
+            %span#wc 0
+            .pull-right
+              %button.btn.btn-default.btn-xs#clear-btn Clear
+  .navbar.navbar-static-bottom.navbar-default
+    .container
+      %p.navbar-text.text-muted
+        %small 
+          Copyright &copy; 2015&nbsp;
+          %a{ href: "http://www.geckodigital.ca/" }> Gecko Digital
+          \. All Rights Reserved. 
+
+        
+  .template#tab-template
+    %li
+      %a{ href: "\#{{link}}" } {{subject}}
+
+  .template#pane-template
+    .tab-pane{ id: "{{slug}}" } {{{paneContent}}}
+
+  .template#grade-panel-template
+    .grade.panel.panel-default{ id: "{{panelID}}" }
+      .panel-heading
+        .panel-title {{grade}}
+      %ul.list-group
+        {{#each statements}}
+        {{> statementTemplate}}
+        {{/each}}
+  
+  .template#statement-template
+    %li.list-group-item.statement 
+      {{s}}
+

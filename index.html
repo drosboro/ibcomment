@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+  <link href='/assets/css/application.css' rel='stylesheet' type='text/css'>
+  <script src='/assets/js/application.js'></script>
+</head>
+<body>
+  <div class='navbar navbar-static-top navbar-default'>
+    <div class='container'>
+      <a class='navbar-brand'>IB Comment Builder</a>
+    </div>
+  </div>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-12'></div>
+    </div>
+    <div class='row'>
+      <div class='col-md-9'>
+        <ul class='nav nav-tabs' id='course-tabs' role='tablist'></ul>
+        <p class='clearfix'></p>
+        <form role='form'>
+          <div class='form-group'>
+            <label for='student-name'>Student Name</label>
+            <input class='form-control' id='student-name' placeholder='First Name' type='text'>
+          </div>
+        </form>
+        <div class='tab-content' id='content-tab'></div>
+      </div>
+      <div class='col-md-3'>
+        <div class='panel panel-default' id='comment-panel'>
+          <div class='panel-heading'>
+            <div class='panel-title'>
+              Comment
+            </div>
+          </div>
+          <div class='panel-body'>
+            <textarea class='form-control' id='comment-content'></textarea>
+          </div>
+          <div class='panel-footer'>
+            Words:
+            <span id='wc'>0</span>
+            <div class='pull-right'>
+              <button class='btn btn-default btn-xs' id='clear-btn'>Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='navbar navbar-static-bottom navbar-default'>
+    <div class='container'>
+      <p class='navbar-text text-muted'>
+        <small>
+          Copyright &copy; 2015&nbsp;<a href='http://www.geckodigital.ca/'>Gecko Digital</a>. All Rights Reserved.
+        </small>
+      </p>
+    </div>
+  </div>
+  <div class='template' id='tab-template'>
+    <li>
+      <a href='#{{link}}'>{{subject}}</a>
+    </li>
+  </div>
+  <div class='template' id='pane-template'>
+    <div class='tab-pane' id='{{slug}}'>{{{paneContent}}}</div>
+  </div>
+  <div class='template' id='grade-panel-template'>
+    <div class='grade panel panel-default' id='{{panelID}}'>
+      <div class='panel-heading'>
+        <div class='panel-title'>{{grade}}</div>
+      </div>
+      <ul class='list-group'>
+        {{#each statements}}
+        {{> statementTemplate}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class='template' id='statement-template'>
+    <li class='list-group-item statement'>
+      {{s}}
+    </li>
+  </div>
+</body>
